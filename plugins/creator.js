@@ -16,10 +16,15 @@ async function handler(m) {
   let njid3 = number3 + '@s.whatsapp.net'
   let onW3 = await this.isOnWhatsApp(njid3) || { isBusiness: false }
 
-let name4 = 'Riyu'
+  let name4 = 'Riyu'
   number4 = owner[3].replace(/[^0-9]/g, '')
   let njid4 = number4 + '@s.whatsapp.net'
   let onW4 = await this.isOnWhatsApp(njid4) || { isBusiness: false }
+
+let name5 = 'Danu'
+  number5 = owner[4].replace(/[^0-9]/g, '')
+  let njid5 = number4 + '@s.whatsapp.net'
+  let onW5 = await this.isOnWhatsApp(njid5) || { isBusiness: false }
 
   m.reply(`Nomer owner itu *bukan bot*, tapi nomor _*pemilik bot*_\n\nSilahan chat jika ada keperluan.\nChat "P" atau minta save kemungkinan tidak akan di balas, dan -9999 social credit.`)
   this.sendMessage(m.chat, {
@@ -67,6 +72,17 @@ FN:${name4.replace(/\n/g, '\\n')}
 TEL;type=CELL;type=VOICE;waid=${number4}:${PhoneNumber('+' + number4).getNumber('international')}${onW4.isBusiness ? `
 X-WA-BIZ-NAME:${(this.contacts[njid4].vname || this.getName(njid4)).replace(/\n/, '\\n')}
 X-WA-BIZ-DESCRIPTION:${((await this.getBusinessProfile(njid4)).description || '').replace(/\n/g, '\\n')}
+` : ''}
+END:VCARD
+`.trim()
+    }, {displayname: name5, vcard: `
+BEGIN:VCARD
+VERSION:3.0
+N:;${name5.replace(/\n/g, '\\n')};;;
+FN:${name5.replace(/\n/g, '\\n')}
+TEL;type=CELL;type=VOICE;waid=${number5}:${PhoneNumber('+' + number5).getNumber('international')}${onW5.isBusiness ? `
+X-WA-BIZ-NAME:${(this.contacts[njid5].vname || this.getName(njid5)).replace(/\n/, '\\n')}
+X-WA-BIZ-DESCRIPTION:${((await this.getBusinessProfile(njid5)).description || '').replace(/\n/g, '\\n')}
 ` : ''}
 END:VCARD
 `.trim()
