@@ -20,13 +20,12 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
       asDocument: chat.useDocument
     })
   } catch (e) {
-    return await conn.sendButton(m.chat, 'Server Error', '', 'COBA LAGI', `${usedPrefix + command} ${args[0]}`)
+    return await conn.sendButton(m.chat, 'Server Error', watermark, 'Coba lagi', `${usedPrefix + command} ${args[0]}`, m)
   }
 }
 handler.help = ['mp4', 'v', ''].map(v => 'yt' + v + ` <url> [server: ${servers.join(', ')}]`)
 handler.tags = ['downloader']
-handler.command = /^yt(v|mp4)?$/i
+handler.command = /^yt(v|mp4)|mp4?$/i
 handler.limit = true
 
 module.exports = handler
-
